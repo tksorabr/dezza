@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:3000/api
+
+# @name listMessage
+GET {{baseUrl}}/messages
+Content-Type: application/json
+
+###
+
+# @name createMessage
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+    "text": "fake content 2"
+}
+
+###
+
+# @name updateMessage
+PUT {{baseUrl}}/messages/65b513ceb342f508ca77d21e
+Content-Type: application/json
+
+{
+    "isSelected": true
+}
+
+###
+
+# @name deleteMessage
+DELETE {{baseUrl}}/messages
+    ?id=65b513ceb342f508ca77d21e
+Content-Type: application/json
+
+###
+
+# @name auth
+GET {{baseUrl}}/auth/providers
