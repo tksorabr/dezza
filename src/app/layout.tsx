@@ -2,11 +2,10 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 import { cn } from '@/libs/utils'
-import DefaultLayout from '@/components/layouts/default-layout'
-import AuthProvider from '@/contexts/AuthProvider'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../libs/auth'
+
 import { fontSans } from '@/libs/fonts'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
   title: 'twitch.tv/dezzasz',
@@ -18,13 +17,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const session = await getServerSession(authOptions)
   return (
     <html lang="en">
-      <body className={cn('font-sans antialiased', fontSans.variable)}>
-        <AuthProvider session={session}>
-          <DefaultLayout>{children}</DefaultLayout>
-        </AuthProvider>
+      <body
+        className={cn(
+          'font-sans antialiased min-h-screen flex flex-col items-center p-4 text-white bg-gradient-to-tl from-[#3EECAC] to-[#EE74E1]',
+          fontSans.variable,
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

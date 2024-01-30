@@ -23,15 +23,22 @@ export default function CheckBoxTerms({
   return (
     <>
       <div className="flex items-center justify-center space-x-2">
-        <Checkbox id="terms" checked={isChecked} />
+        <Checkbox
+          id="terms"
+          checked={isChecked}
+          onCheckedChange={() => onChange(!isChecked)}
+        />
+        <label
+          htmlFor="terms"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Aceitar condições de participação.
+        </label>
         <Dialog>
           <DialogTrigger asChild>
-            <label
-              htmlFor="terms"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Aceitar condições de participação
-            </label>
+            <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 underline italic cursor-pointer">
+              Clique aqui para ler as condições
+            </span>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
@@ -54,14 +61,7 @@ export default function CheckBoxTerms({
             </div>
             <DialogFooter className="flex  gap-2 sm:space-x-0">
               <DialogClose asChild>
-                <Button
-                  className="w-full"
-                  size={'lg'}
-                  variant={isChecked ? 'default' : 'destructive'}
-                  onClick={() => onChange(!isChecked)}
-                >
-                  {isChecked ? 'Aceitar' : 'Recusar'}
-                </Button>
+                <Button size={'lg'}>Fechar</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>
