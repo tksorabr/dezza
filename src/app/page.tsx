@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center gap-4">
-      <Link href={'/dezzabafecomigo'}>
+      <Link href={'https://www.twitch.tv/dezzasz'}>
         <Button size="lg" className="w-full">
           <span>
             Acessar <b>twitch.com/dezzasz</b>
