@@ -20,6 +20,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Checkbox } from '@/components/ui/checkbox'
 import ModalTerms from './components/modal-terms'
+import { useState } from 'react'
 
 const formSchema = z.object({
   message: z.string().min(2, {
@@ -42,13 +43,16 @@ export default function DezzabafeComigoPage() {
     },
   })
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true)
     try {
       await api.post('/messages', {
         text: values.message,
       })
       router.push('/dezzabafecomigo/success')
     } catch (error) {
+      setIsLoading(false)
       toast.error('Erro ao enviar mensagem')
     }
   }
@@ -78,12 +82,12 @@ export default function DezzabafeComigoPage() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="bg-primary-foreground  rounded-sm p-2" />
+                <FormMessage className="bg-rose-200 rounded-sm p-2" />
                 <FormDescription>Mensagens 100% anônimas</FormDescription>
               </FormItem>
             )}
           />
-          <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col justify-center gap-2">
             <FormField
               control={form.control}
               name="acceptedTerms"
@@ -100,13 +104,15 @@ export default function DezzabafeComigoPage() {
                       </label>
                     </div>
                   </FormControl>
-                  <FormMessage className="bg-primary-foreground rounded-sm p-2" />
+                  <FormMessage className="bg-rose-200 rounded-sm p-2" />
                 </FormItem>
               )}
             />
             <ModalTerms />
           </div>
-          <Button className="text-3xl h-20">Desabafar!</Button>
+          <Button disabled={isLoading} className="text-3xl h-20">
+            Desabafar!
+          </Button>
         </form>
       </Form>
     </div>
