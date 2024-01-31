@@ -1,6 +1,5 @@
-import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import { CheckIcon } from '@radix-ui/react-icons'
+import { CheckCircle } from 'lucide-react'
 
 import Link from 'next/link'
 
@@ -8,10 +7,10 @@ import Link from 'next/link'
 export default function SuccessPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-10">
-      <Alert>
-        <CheckIcon className="h-4 w-4" />
-        <AlertTitle>Mensagem enviada com sucesso!</AlertTitle>
-      </Alert>
+      <div className="flex flex-col items-center gap-4 mb-6 text-green-500">
+        <CheckCircle size={44} />
+        <h1 className="text-xl font-semibold">Mensagem enviada com sucesso!</h1>
+      </div>
 
       <Link href={'/dezzabafecomigo'}>
         <Button variant={'link'} size="sm">

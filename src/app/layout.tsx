@@ -20,10 +20,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(
-          'font-sans antialiased min-h-screen flex flex-col items-center p-4 text-white bg-gradient-to-tl from-[#3EECAC] to-[#EE74E1]',
-          fontSans.variable,
-        )}
+        className={cn('font-sans antialiased min-h-screen', fontSans.variable)}
       >
         <ThemeProvider
           attribute="class"
