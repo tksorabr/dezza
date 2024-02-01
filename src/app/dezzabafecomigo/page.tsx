@@ -57,7 +57,7 @@ export default function DezzabafeComigoPage() {
     }
   }
   return (
-    <div className="min-h-screen flex flex-col justify-center gap-8">
+    <div className="min-h-screen flex flex-col justify-center gap-8 p-2">
       <div className="flex flex-col items-center gap-2">
         <Image alt="logo" width={200} src={imgLogo} />
         <div className="text-center text-xl font-extralight">

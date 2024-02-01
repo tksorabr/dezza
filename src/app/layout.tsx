@@ -6,6 +6,7 @@ import { cn } from '@/libs/utils'
 import { fontSans } from '@/libs/fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
+import QueryClientProvider from '@/libs/react-query'
 
 export const metadata: Metadata = {
   title: 'twitch.tv/dezzasz',
@@ -31,8 +32,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
+          <QueryClientProvider>{children}</QueryClientProvider>
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>

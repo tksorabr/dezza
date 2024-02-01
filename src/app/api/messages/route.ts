@@ -1,9 +1,9 @@
 import { authOptions } from '@/libs/auth'
 import { prisma } from '@/libs/prisma'
 import { getServerSession } from 'next-auth'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions)
   if (!session) {
     return NextResponse.json(
@@ -11,7 +11,13 @@ export async function GET() {
       { status: 401 },
     )
   }
-  const messages = await prisma.message.findMany()
+  const searchParams = request.nextUrl.searchParams
+  const isSelected = searchParams.get('isSelected')
+  const messages = await prisma.message.findMany({
+    where: {
+      isSelected: isSelected === 'true',
+    },
+  })
   return NextResponse.json(messages)
 }
 
