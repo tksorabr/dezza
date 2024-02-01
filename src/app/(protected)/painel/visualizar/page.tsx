@@ -38,7 +38,7 @@ export default function ListSelectedMessages() {
   if (isLoading) return <>Carregando</>
   if (!data) return <>Erro ao carregar dados</>
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col gap-4 items-center justify-center font-medium p-6 text-base/loose leading-loose">
+    <div className="min-h-screen w-full flex flex-col gap-4 items-center justify-center font-medium p-6 text-base/loose leading-loose">
       <div>{formatText(data[index].text)}</div>
       <div className="flex flex-row gap-2">
         {index >= 1 && (

@@ -1,5 +1,6 @@
 'use client'
 
+import FormatText from '@/components/format-text'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -69,7 +70,9 @@ export default function ListMessages({
           <CardHeader>
             <CardDescription>#{message.id}</CardDescription>
           </CardHeader>
-          <CardContent>{message.text}</CardContent>
+          <CardContent>
+            <FormatText text={message.text} />
+          </CardContent>
           <CardFooter className="flex justify-end gap-4">
             {type === 'pending' ? (
               <Button

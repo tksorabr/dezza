@@ -16,7 +16,7 @@ interface AuthLayoutProps {
 export default async function AuthLayout({ children }: AuthLayoutProps) {
   const session = await getServerSession(authOptions)
   if (!session) {
-    redirect('/')
+    redirect('/api/auth/signin')
   }
   return <>{children}</>
 }

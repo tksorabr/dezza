@@ -12,7 +12,7 @@ export default function SuccessPage() {
         <h1 className="text-xl font-semibold">Mensagem enviada com sucesso!</h1>
       </div>
 
-      <Link href={'/dezzabafecomigo'}>
+      <Link href={'/'}>
         <Button variant={'link'} size="sm">
           Voltar
         </Button>
